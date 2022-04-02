@@ -13,12 +13,15 @@ describe('ValueObject Unit Tests', () => {
     expect(sut.value).toStrictEqual({ prop: 'any_value' })
   })
 
+  it ('should throw an error when value is null or undefined', () => {
+    expect(() => new ValueObjectStub(null)).toThrowError('Value cannot be null or undefined')
+    expect(() => new ValueObjectStub(undefined)).toThrowError('Value cannot be null or undefined')
+  })
+
   it('should convert to a string', () => {
     type ArrangeProps = { input: any, outputExpected: string }
     const date = new Date()
     const arrange: ArrangeProps[]  = [
-      { input: null, outputExpected: 'null' },
-      { input: undefined, outputExpected: 'undefined' },
       { input: '', outputExpected: '' },
       { input: 'fake', outputExpected: 'fake' },
       { input: 5, outputExpected: '5' },
@@ -33,5 +36,28 @@ describe('ValueObject Unit Tests', () => {
       const sut = new ValueObjectStub(input)
       expect(sut + '').toBe(outputExpected)
     })
+  })
+
+  it('should create an immutable object', () => {
+    const sut = new ValueObjectStub('fake_id')
+    expect(() => {
+      (sut as any)['value'] = 'new_value'
+    }).toThrowError('Cannot set property value of [object Object] which has only a getter')
+
+    const obj = new ValueObjectStub({
+      prop1: 'value1',
+      deep: { prop2: 'value2', prop3: new Date() },
+    })
+    expect(() => {
+      (obj as any).value.prop1 = 'new_value'
+    }).toThrowError('Cannot assign to read only property \'prop1\' of object \'#<Object>\'')
+
+    expect(() => {
+      (obj as any).value.deep.prop3 = 'new_value'
+    }).toThrowError('Cannot assign to read only property \'prop3\' of object \'#<Object>\'')
+
+    expect(obj.value.deep.prop3).toBeInstanceOf(Date)
+    expect(typeof obj.value.deep.prop2).toBe('string')
+    expect(typeof obj.value.prop1).toBe('string')
   })
 });
