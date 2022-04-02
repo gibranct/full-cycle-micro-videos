@@ -1,8 +1,13 @@
+import { deepFreeze } from '../utils/object'
+
 export abstract class ValueObject<Value = any> {
   protected readonly _value: Value
 
   constructor(_value: Value) {
-    this._value = _value
+    if ([null, undefined].includes(_value)) {
+      throw new Error('Value cannot be null or undefined')
+    }
+    this._value = deepFreeze(_value)
   }
 
   get value() {
