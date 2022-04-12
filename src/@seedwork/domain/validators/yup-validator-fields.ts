@@ -10,7 +10,9 @@ export abstract class YupValidatorFields<T = any> implements ValidatorFieldsInte
 
   validate(data: any): boolean {
     try {
-      this.schema.validateSync(data, { abortEarly: false })
+      this.errors = null
+      this.validatedData = null
+      this.schema.validateSync(data ?? {}, { abortEarly: false })
       this.validatedData = data
       return true
     } catch (error: any) {
