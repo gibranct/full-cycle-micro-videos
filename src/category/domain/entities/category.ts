@@ -1,5 +1,5 @@
-import * as Yup from 'yup';
-
+import { EntityValidationError } from '../../../@seedwork/domain/errors/validation-error';
+import CategoryValidatorFactory from '../validators/category-validator';
 import { Entity } from './../../../@seedwork/domain/entity/entity';
 import { UniqueEntityId } from './../../../@seedwork/domain/value-objects/unique-entity-id.vo';
 
@@ -22,13 +22,13 @@ export class Category extends Entity<CategoryProperties> {
     this.description = props.description
     this.isActive = props.isActive
     this.createdAt = props.createdAt
-    this.validate()
+    Category.validate(props)
   }
 
   update(props: UpdateProps) {
     this.description = props.description
     this.props.name = props.name
-    this.validate()
+    Category.validate(props)
   }
 
   activate() {
@@ -67,19 +67,11 @@ export class Category extends Entity<CategoryProperties> {
     this.props.createdAt = value ?? new Date()
   }
 
-  private validate() {
-    const nameErrorMessage = 'Name is required'
-    const schema = Yup.object().shape({
-      name: Yup.string().typeError(nameErrorMessage).required(nameErrorMessage),
-      description: Yup.string().nullable(),
-      isActive: Yup.boolean(),
-      createdAt: Yup.date(),
-      id: Yup.string().required('Id is required')
-    })
-
-    schema.validateSync({
-      ...this.props,
-      id: this.id
-    })
+  static validate(props: CategoryProperties) {
+    const validator = CategoryValidatorFactory.create()
+    const isValid = validator.validate(props)
+    if (!isValid) {
+      throw new EntityValidationError(validator.errors)
+    }
   }
 }
