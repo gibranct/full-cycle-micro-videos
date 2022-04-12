@@ -4,7 +4,7 @@ import { Category, CategoryProperties } from './category'
 describe('Category Unit Tests', () => {
   test('Category constructor', () => {
     type TestProps = { input: CategoryProperties, expected: any }
-    const validateSpy = jest.spyOn(Category.prototype as any, 'validate')
+    const validateSpy = jest.spyOn(Category, 'validate')
     const createdAt = new Date()
     const testsProps: TestProps[] = [
       { input: { name: 'Movie' }, expected: { name: 'Movie', description: null, isActive: false, createdAt: expect.any(Date) } },
@@ -19,10 +19,6 @@ describe('Category Unit Tests', () => {
       expect(category.props).toEqual(expected)
       expect(validateSpy).toHaveBeenCalled()
     })
-  })
-
-  it ('should throw an error if name is null', () => {
-    expect(() => new Category({ name: null })).toThrowError('Name is required')
   })
 
   test('getter of name field', () => {
