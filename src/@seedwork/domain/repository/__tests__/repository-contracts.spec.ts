@@ -1,5 +1,5 @@
-import { Entity } from '../entity/entity'
-import { SearchParams, SearchResult } from './repository-contracts'
+import { Entity } from '../../entity/entity'
+import { SearchParams, SearchResult } from '../repository-contracts'
 
 class EntityStub extends Entity<{ name: string; price: number }> {
   constructor(name: string, price: number) {
