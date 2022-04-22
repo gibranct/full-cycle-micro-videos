@@ -1,15 +1,15 @@
 import { UniqueEntityId } from './../../../../../@seedwork/domain/value-objects/unique-entity-id.vo'
 import { Category } from './../../../entities/category'
 import { CategoryInMemoryRepository } from './../../../../infra/repository/category-in-memory.repository'
-import { CreateCategortUseCase } from './../create-category.use-case'
+import { CreateCategoryUseCase } from './../create-category.use-case'
 
-describe('CreateCategortUseCase Unit Tests', () => {
-  let createCategoryUseCase: CreateCategortUseCase
+describe('CreateCategoryUseCase Unit Tests', () => {
+  let createCategoryUseCase: CreateCategoryUseCase
   let categoryRepository: CategoryInMemoryRepository
 
   beforeEach(() => {
     categoryRepository = new CategoryInMemoryRepository()
-    createCategoryUseCase = new CreateCategortUseCase(categoryRepository)
+    createCategoryUseCase = new CreateCategoryUseCase(categoryRepository)
   })
 
   it('should call CategoryRepository with the correct values', async () => {

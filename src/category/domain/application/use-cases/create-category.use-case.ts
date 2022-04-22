@@ -1,24 +1,13 @@
+import { CategoryOutput } from './../dto/category-output.dto'
 import { Category } from './../../entities/category'
 import { CategoryRepository } from '../../repository/category.repository'
 
-export type Input = {
-  name: string
-  description?: string
-  isActive?: boolean
-}
-
-export type Output = {
-  id: string
-  name: string
-  description?: string | null
-  isActive: boolean
-  createdAt: Date
-}
-
-export class CreateCategortUseCase {
+export class CreateCategoryUseCase {
   constructor(private readonly categoryRepo: CategoryRepository.Repository) {}
 
-  async execute(input: Input): Promise<Output> {
+  async execute(
+    input: CreateCategoryUseCase.Input
+  ): Promise<CreateCategoryUseCase.Output> {
     const category = new Category(input)
 
     await this.categoryRepo.insert(category)
@@ -31,4 +20,14 @@ export class CreateCategortUseCase {
       createdAt: category.createdAt,
     }
   }
+}
+
+export namespace CreateCategoryUseCase {
+  export type Input = {
+    name: string
+    description?: string
+    isActive?: boolean
+  }
+
+  export type Output = CategoryOutput
 }
