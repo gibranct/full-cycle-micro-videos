@@ -109,7 +109,10 @@ export type SearchResultProps<E extends Entity, Filter> = {
   filter: Filter | null
 }
 
-export class SearchResult<E extends Entity, Filter = string> {
+export class SearchResult<
+  E extends Entity<any> = Entity<any>,
+  Filter = string
+> {
   readonly items: E[]
   readonly total: number
   readonly currentPage: number
