@@ -1,8 +1,11 @@
+import { UseCase } from './../../../../@seedwork/application/use-case'
 import { CategoryOutput } from './../dto/category-output.dto'
 import { Category } from './../../entities/category'
 import { CategoryRepository } from '../../repository/category.repository'
 
-export class CreateCategoryUseCase {
+export class CreateCategoryUseCase
+  implements UseCase<CreateCategoryUseCase.Input, CreateCategoryUseCase.Output>
+{
   constructor(private readonly categoryRepo: CategoryRepository.Repository) {}
 
   async execute(
