@@ -1,6 +1,6 @@
-import { Category } from './../../../entities/category'
-import { CategoryInMemoryRepository } from './../../../../infra/repository/category-in-memory.repository'
-import { DeleteCategoryUseCase } from './../delete-category.use-case'
+import { Category } from '../../../domain/entities/category'
+import { CategoryInMemoryRepository } from '../../../infra/repository/category-in-memory.repository'
+import { DeleteCategoryUseCase } from '../delete-category.use-case'
 
 describe('DeleteCategoryUseCase Unit Tests', () => {
   let deleteCategoryUseCase: DeleteCategoryUseCase

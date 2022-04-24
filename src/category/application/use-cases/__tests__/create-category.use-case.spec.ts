@@ -1,7 +1,7 @@
-import { UniqueEntityId } from './../../../../../@seedwork/domain/value-objects/unique-entity-id.vo'
-import { Category } from './../../../entities/category'
-import { CategoryInMemoryRepository } from './../../../../infra/repository/category-in-memory.repository'
-import { CreateCategoryUseCase } from './../create-category.use-case'
+import { UniqueEntityId } from '../../../../@seedwork/domain/value-objects/unique-entity-id.vo'
+import { Category } from '../../../domain/entities/category'
+import { CategoryInMemoryRepository } from '../../../infra/repository/category-in-memory.repository'
+import { CreateCategoryUseCase } from '../create-category.use-case'
 
 describe('CreateCategoryUseCase Unit Tests', () => {
   let createCategoryUseCase: CreateCategoryUseCase

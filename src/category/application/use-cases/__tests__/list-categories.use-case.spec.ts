@@ -1,7 +1,7 @@
-import { Category } from './../../../entities/category'
-import { CategoryInMemoryRepository } from './../../../../infra/repository/category-in-memory.repository'
-import { ListCategoriesUseCase } from './../list-categories.use-case'
-import { CategoryRepository } from '../../../repository/category.repository'
+import { Category } from '../../../domain/entities/category'
+import { CategoryInMemoryRepository } from '../../../infra/repository/category-in-memory.repository'
+import { ListCategoriesUseCase } from '../list-categories.use-case'
+import { CategoryRepository } from '../../../domain/repository/category.repository'
 
 describe('ListCategoriesUseCase Unit Tests', () => {
   let listCategoriesUseCase: ListCategoriesUseCase

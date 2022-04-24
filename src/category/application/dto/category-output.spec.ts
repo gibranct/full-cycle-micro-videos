@@ -1,5 +1,5 @@
 import { CategoryOutputMapper } from './category-output'
-import { Category } from './../../entities/category'
+import { Category } from '../../domain/entities/category'
 
 describe('CategoryOutputMapper Unit Tests', () => {
   test('toOutput', () => {

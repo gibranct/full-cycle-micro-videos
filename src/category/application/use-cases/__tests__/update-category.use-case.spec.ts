@@ -1,6 +1,6 @@
-import { Category } from './../../../entities/category'
-import { CategoryInMemoryRepository } from './../../../../infra/repository/category-in-memory.repository'
-import { UpdateCategoryUseCase } from './../update-category.use-case'
+import { Category } from '../../../domain/entities/category'
+import { CategoryInMemoryRepository } from '../../../infra/repository/category-in-memory.repository'
+import { UpdateCategoryUseCase } from '../update-category.use-case'
 
 describe('UpdateCategoryUseCase Unit Tests', () => {
   let createCategoryUseCase: UpdateCategoryUseCase

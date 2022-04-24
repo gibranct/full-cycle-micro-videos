@@ -1,5 +1,5 @@
-import { UseCase } from './../../../../@seedwork/application/use-case'
-import { CategoryRepository } from '../../repository/category.repository'
+import { UseCase } from '../../../@seedwork/application/use-case'
+import { CategoryRepository } from '../../domain/repository/category.repository'
 
 export class DeleteCategoryUseCase
   implements UseCase<DeleteCategoryUseCase.Input, DeleteCategoryUseCase.Output>
