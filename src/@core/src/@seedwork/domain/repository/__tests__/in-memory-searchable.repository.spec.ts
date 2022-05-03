@@ -1,4 +1,4 @@
-import { SearchParams, SearchResult } from './../repository-contracts'
+import { SearchParams, SearchResult } from '../repository-contracts'
 import { InMemorySearchableRepository } from '../in-memory.repository'
 import { Entity } from '../../entity/entity'
 

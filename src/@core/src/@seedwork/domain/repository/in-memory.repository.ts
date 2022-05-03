@@ -1,4 +1,4 @@
-import { NotFoundError } from './../errors/not-found.error'
+import { NotFoundError } from '../errors/not-found.error'
 import {
   RepositoryInterface,
   SearchableRepositoryInterface,
@@ -6,7 +6,7 @@ import {
   SearchResult,
 } from './repository-contracts'
 import { Entity } from '../entity/entity'
-import { UniqueEntityId } from './../value-objects/unique-entity-id.vo'
+import { UniqueEntityId } from '../value-objects/unique-entity-id.vo'
 
 export abstract class InMemoryRepository<E extends Entity>
   implements RepositoryInterface<E>

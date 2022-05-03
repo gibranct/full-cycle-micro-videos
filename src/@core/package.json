@@ -1,0 +1,57 @@
+{
+  "name": "@fc/micro-videos",
+  "version": "1.0.0",
+  "description": "admin do catalogo de videos",
+  "main": "index.js",
+  "scripts": {
+    "ts-node": "ts-node",
+    "tsc": "tsc",
+    "build": "tsc -b ./tsconfig.json",
+    "build:w": "tsc -b ./tsconfig.json -w",
+    "tsc:check": "tsc --noEmit",
+    "test": "jest --watchAll",
+    "test:cov": "jest --coverage",
+    "cti": "cti",
+    "cti:@core": "sh ./cti.sh"
+  },
+  "exports": {
+    "./@seedwork/application": "./dist/@seedwork/application/index.js",
+    "./@seedwork/domain": "./dist/@seedwork/domain/index.js",
+    "./@seedwork/infra": "./dist/@seedwork/infra/index.js",
+    "./category/application": "./dist/category/application/index.js",
+    "./category/domain": "./dist/category/domain/index.js",
+    "./category/infra": "./dist/category/infra/index.js"
+  },
+  "typesVersions": {
+    ">=4.0": {
+      "@seedwork/application": [ "./dist/@seedwork/application/index.d.ts" ],
+      "@seedwork/domain": [ "./dist/@seedwork/domain/index.d.ts" ],
+      "@seedwork/infra": [ "./dist/@seedwork/infra/index.d.ts" ],
+      "category/application": ["./dist/category/application/index.d.ts"],
+      "category/domain": ["./dist/category/domain/index.d.ts"],
+      "category/infra": ["./dist/category/infra/index.d.ts"]
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/core": "^1.2.161",
+    "@swc/jest": "^0.2.20",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^14.14.31",
+    "@types/uuid": "^8.3.4",
+    "create-ts-index": "^1.14.0",
+    "jest": "^27.5.1",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2",
+    "yup": "^0.32.11"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
+  "imports": {
+    "#seedwork/*": "./dist/@seedwork/*.js",
+    "#category/*": "./dist/category/*.js"
+  }
+}

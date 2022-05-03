@@ -1,5 +1,5 @@
 import { PaginationOutputMapper } from './pagination-output'
-import { SearchResult } from './../../domain/repository/repository-contracts'
+import { SearchResult } from '../../domain/repository/repository-contracts'
 
 describe('PaginationOutputMapper Unit Tests', () => {
   test('toOutput', () => {
